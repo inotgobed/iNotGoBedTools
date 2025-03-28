@@ -55,24 +55,24 @@ public class ExampleMod {
     );
 
     // Creates a new food item with the id "inotgobedtools:example_id", nutrition 1 and saturation 2
-    public static final RegistryObject<Item> EXAMPLE_ITEM = ITEMS.register("example_item",
+    public static final RegistryObject<Item> lava_pickaxe = ITEMS.register("lava_pickaxe",
         () -> new Item(new Item.Properties()
-            .setId(ITEMS.key("example_item"))
+            .setId(ITEMS.key("lava_pickaxe"))
             .food(new FoodProperties.Builder()
-                .alwaysEdible()
-                .nutrition(1)
-                .saturationModifier(2f)
+                //.alwaysEdible()
+                //.nutrition(1)
+                //.saturationModifier(2f)
                 .build()
             )
         )
     );
 
     // Creates a creative tab with the id "inotgobedtools:example_tab" for the example item, that is placed after the combat tab
-    public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
+    public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("the tools", () -> CreativeModeTab.builder()
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
+            .icon(() -> lava_pickaxe.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
+                output.accept(lava_pickaxe.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
             }).build());
 
     public ExampleMod(FMLJavaModLoadingContext context) {
